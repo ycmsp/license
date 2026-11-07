@@ -3,7 +3,8 @@ VMProtect Online Licensing &amp; Software Protection
 一键加密和服务端都实现了，服务端是WEB管理，客户端是C开发的，基于VMP一键加密
 
 官网:https://soft.jiasu7.top
-
+教程：https://doc.jiasu7.top/17
+加密端需加QQ群免费下载：1061911185 ，群内更新维护
 <img width="1270" height="1127" alt="12" src="https://github.com/user-attachments/assets/e507b0d7-c2c8-4f92-ba7b-b9f3f588f8f8" />
 
 

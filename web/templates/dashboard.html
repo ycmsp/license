@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{.Title}}</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="topbar">
+  <span class="title">{{.Title}}</span>
+  <div class="stats-bar" id="statsBar" data-i18n="topbar.loading">加载中...</div>
+  <div class="topbar-right">
+    <a class="link-btn" id="linkWebsite" href="/goto/w" target="_blank">🌐 <span data-i18n="contact.website">Website</span></a>
+    <a class="link-btn" id="linkEmail" href="/goto/e">✉️ <span data-i18n="contact.email">Email</span></a>
+    <a class="link-btn" id="linkTeams" href="/goto/t" target="_blank">👥 <span data-i18n="contact.teams">Teams</span></a>
+    <button class="link-btn" onclick="showQQGroup()">💬 <span data-i18n="contact.qqgroup">QQ群</span></button>
+    <button class="lang-btn" id="langBtn" onclick="switchLang()">🌐 <span id="langLabel">EN</span></button>
+    <button class="lang-btn" onclick="openChangePwd()">🔒 <span data-i18n="topbar.changepwd">修改密码</span></button>
+    <button class="logout-btn" id="logoutBtn" data-i18n="topbar.logout">退出</button>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="create-box">
+    <label data-i18n="lbl.count">开卡数量</label>
+    <input type="number" id="createCount" value="1" min="1" max="1000">
+    <label data-i18n="lbl.validDays">有效期</label>
+    <input type="text" id="validDays" data-i18n-ph="placeholder.validDays" value="30D">
+    <button id="createBtn" data-i18n="btn.create">开卡</button>
+  </div>
+  <div class="filter-box">
+    <select id="statusFilter">
+      <option value="" data-i18n="filter.all">全部</option>
+      <option value="0" data-i18n="filter.unused">未使用</option>
+      <option value="1" data-i18n="filter.active">已激活</option>
+      <option value="2" data-i18n="filter.banned">封停</option>
+      <option value="3" data-i18n="filter.expired">已过期</option>
+    </select>
+    <button id="searchBtn" data-i18n="btn.search">查询</button>
+    <button id="refreshBtn" data-i18n="btn.refresh">刷新</button>
+  </div>
+</div>
+
+<div class="result-keys" id="resultKeys" style="display:none;">
+  <h3 data-i18n="result.title">新开卡密</h3>
+  <textarea id="keyList" rows="6" readonly></textarea>
+  <button id="copyKeysBtn" data-i18n="btn.copyKeys">复制全部</button>
+</div>
+
+<table class="card-table">
+  <thead>
+    <tr>
+      <th data-i18n="th.id">ID</th>
+      <th data-i18n="th.key">卡密</th>
+      <th data-i18n="th.status">状态</th>
+      <th data-i18n="th.validDays">有效期</th>
+      <th data-i18n="th.machine">机器码</th>
+      <th data-i18n="th.activateTime">激活时间</th>
+      <th data-i18n="th.expireTime">到期时间</th>
+      <th data-i18n="th.loginCount">登录次数</th>
+      <th data-i18n="th.swapCount">换绑次数</th>
+      <th data-i18n="th.banReason">封禁原因</th>
+      <th data-i18n="th.actions">操作</th>
+    </tr>
+  </thead>
+  <tbody id="cardTableBody"></tbody>
+</table>
+<div class="pagination" id="pagination"></div>
+
+<!-- 修改密码弹窗 -->
+<div class="modal-overlay" id="changePwdModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header"><span data-i18n="cpwd.title">修改密码</span><span class="modal-close" onclick="closeChangePwd()">×</span></div>
+    <div class="modal-body">
+      <div class="form-row"><label data-i18n="cpwd.old">旧密码</label><input type="password" id="oldPwd" autocomplete="current-password"></div>
+      <div class="form-row"><label data-i18n="cpwd.new">新密码</label><input type="password" id="newPwd" autocomplete="new-password"></div>
+      <div class="form-row"><label data-i18n="cpwd.confirm">确认新密码</label><input type="password" id="confirmPwd" autocomplete="new-password"></div>
+      <div id="changePwdMsg" class="modal-msg"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeChangePwd()" data-i18n="cpwd.cancel">取消</button>
+      <button class="btn-ok" onclick="submitChangePwd()" data-i18n="cpwd.submit">确认修改</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

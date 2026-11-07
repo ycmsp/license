@@ -1,0 +1,14 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: "root"
+  database: lite_auth
+  charset: utf8mb4
+
+server:
+  port: 8081
+
+admin:
+  username: admin
+  password: admin123 #首次部署的管理员密码,web后台修改即可

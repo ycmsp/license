@@ -1,4 +1,4 @@
-# license
+# FengYun license
 VMProtect Online Licensing &amp; Software Protection
 一键加密和服务端都实现了，服务端是WEB管理，客户端是C开发的，基于VMP一键加密
 
